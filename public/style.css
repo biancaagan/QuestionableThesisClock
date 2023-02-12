@@ -18,6 +18,10 @@
     color: red;
 }
 
+#maybe{
+    color: yellow;
+}
+
 #remote{
     font-family:  "Courier New", monospace;
     margin: auto;
