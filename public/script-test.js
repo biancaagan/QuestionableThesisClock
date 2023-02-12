@@ -1,5 +1,7 @@
 /*
 
+    *** CODE FOR TESTING ***
+
     Code worked off of Tom Igoe's MQTTjs Client Example
     https://github.com/tigoe/mqtt-examples/blob/main/browser-clients/mqttjs/MqttJsClientSimple/script.js
 
@@ -127,9 +129,16 @@ function onMessage(topic, payload, packet){
     }
 
     // Canvas
-    var c = document.getElementById("myCanvas");
+    var c = document.getElementById("myCanvas");tml
     var ctx = c.getContext("2d");
     ctx.beginPath();
+    
+    // DRAWING CIRCLES
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = lineCol;
+    ctx.strokeStyle = "lineCol";
+    ctx.arc(Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), 50, 0, 2 * Math.PI);
+    ctx.fill();
 
     // // DRAWING LINES
     // ctx.lineCap = "round";
@@ -137,14 +146,6 @@ function onMessage(topic, payload, packet){
     // ctx.lineTo(Math.floor(Math.random() * 1000), Math.floor(Math.random() * 500));
     // ctx.lineWidth = 5;
     // ctx.strokeStyle = lineCol;
-
-    // DRAWING CIRCLES
-    ctx.globalAlpha = 0.2;
-    ctx.fillStyle = lineCol;
-    ctx.strokeStyle = "lineCol";
-    ctx.arc(Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), 50, 0, 2 * Math.PI);
-    ctx.fill();
-    
     ctx.stroke();
    
     // remoteDiv.innerHTML = result;

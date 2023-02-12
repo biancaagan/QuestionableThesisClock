@@ -1,3 +1,9 @@
+/* #allText{
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+} */
+
 #title{
     font-family:  "Courier New", monospace;
     text-align: center;
@@ -29,15 +35,26 @@
     margin-top: 50px;
 }
 
+
 #canvas-container{
-    width: 100%;
+    width: 95%;
     text-align: center;
-    /* margin-top: 10px; */
+    /* position: absolute;
+    z-index: 1; */
 }
 
 canvas{
+    width: 95%;
+    height: 95%;
     display: inline;
+    /* position: absolute;
+    z-index: 1; */
 }
+
+/* #footer{
+    position: absolute;
+    z-index: 1;
+} */
 
 p{
     font-family:  "Courier New", monospace;
