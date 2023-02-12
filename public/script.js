@@ -89,7 +89,7 @@ function onMessage(topic, payload, packet){
     // result += '<br>Roll Value: ' + rollVal;
 
     // Line color determination:
-    let lineCol = "white";
+    let lineCol = "black";
     if(rollVal < 95 && rollVal > 85){
         lineCol = "green";
     }
