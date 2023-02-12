@@ -5,7 +5,7 @@ const portNum = 5555;
 
 
 // Serve alL the static files in the public folder:
-app.use('/gyro/', express.static("public"));    // with server
+app.use('/QuestionableThesisClock/', express.static("public"));    // with server
 //app.use(express.static("public"));    // locally
 
 
