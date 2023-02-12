@@ -1,3 +1,30 @@
+/*
+
+    Code worked off of Tom Igoe's MQTTjs Client Example
+    https://github.com/tigoe/mqtt-examples/blob/main/browser-clients/mqttjs/MqttJsClientSimple/script.js
+
+    Gyroscope data is sent over wifi from an Arduino to the MQTT broker,
+    this code reads the pitch value and translates that into the color
+    of the lines being drawn. 
+
+    This project is for my Questionable Thesis Clock, its physical form
+    will be a block that is two sided with either "Thesis?" and "Thesis!"
+
+    The orientation of the block (whether the '?' or the '!' is 
+    facing upwards) determines if I am working on my thesis project.
+
+    Visually, it draws different colored lines in a web browser. 
+    More green is more time spent on my thesis.
+    More red is less time spent on my thesis.
+    And blue is questionable, as it is drawn when the pitch value is 
+    outside of the specified range (i.e. when flipping the block over).
+
+    It is not an accurate clock.
+
+
+    by Bianca Gan 2/12/23
+
+*/
 // test.mosquitto.org uses no username and password:
 const broker = 'wss://test.mosquitto.org:8081';
 
