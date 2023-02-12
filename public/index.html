@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.3.7/mqtt.min.js"
+    integrity="sha512-tc5xpAPaQDl/Uxd7ZVbV66v94Lys0IefMJSdlABPuzyCv0IXmr9TkqEQvZiWKRoXMSlP5YPRwpq2a+v5q2uzMg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Questionable Thesis Clock</title>
+
+  </head>
+
+<body>
+
+  <div id='title'>
+    <h1>How much time is Bianca spending on her thesis?</h1>
+
+    Click <a href="https://github.com/tigoe/mqtt-examples/tree/main/browser-clients/mqttjs/MqttJsClientSimple">here</a> for the source code by Tom Igoe.
+  
+    <div id='local'></div>
+  </div>
+
+  <div id="info">
+    <h2 id="yes">Green = YES!</h2>
+    <h2 id="no">Red = no :(</h2>
+  </div>
+
+  <br>
+
+  <div id='remote'></div>
+
+  <br>
+  
+  <div id="canvas-container">
+    <canvas id="myCanvas" width="1000" height="500" style="border:1px solid #ffffff;"></canvas>
+  </div>
+
+  <div id="footer">
+    <p id="footer">&copy; 2023 bianca gan | conndev device data dashboard (work in progress)</p>
+  </div>
+
+</body>
+</html>

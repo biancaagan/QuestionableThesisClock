@@ -1,0 +1,41 @@
+#title{
+    font-family:  "Courier New", monospace;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#info{
+    font-family:  "Courier New", monospace;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#yes{
+    color: green;
+}
+
+#no{
+    color: red;
+}
+
+#remote{
+    font-family:  "Courier New", monospace;
+    margin: auto;
+    width: 50%;
+    margin-top: 50px;
+}
+
+#canvas-container{
+    width: 100%;
+    text-align: center;
+    /* margin-top: 10px; */
+}
+
+canvas{
+    display: inline;
+}
+
+p{
+    font-family:  "Courier New", monospace;
+    text-align: center;
+}
