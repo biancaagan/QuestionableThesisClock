@@ -5,8 +5,8 @@ const portNum = 8181;
 
 
 // Serve alL the static files in the public folder:
-//app.use('/QuestionableThesisClock/', express.static("public"));    // with server
-app.use(express.static("public"));    // locally
+app.use('/QuestionableThesisClock/', express.static("public"));    // with server
+//app.use(express.static("public"));    // locally
 
 
 function serverStart(){
