@@ -39,7 +39,10 @@ button{
     font-family:  "Courier New", monospace;
     margin: auto;
     width: 50%;
-    margin-top: 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 16px;
 }
 
 

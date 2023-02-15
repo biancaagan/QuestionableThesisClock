@@ -99,23 +99,19 @@ function onSubscribe(response, error){
 
 // Handler for MQTT message received event:
 function onMessage(topic, payload, packet){
-    // let result;
-
     // Message is a buffer, convert to a string:
     let payloadStr = payload.toString();
 
     // Convert to JSON:
     let payloadJson = JSON.parse(payloadStr);
 
-    // result += '<br>';
-
     // List out individual gyro values:
     let headingVal = payloadJson.heading;
     let pitchVal = payloadJson.pitch;
     let rollVal = payloadJson.roll;
-    // result += '<br>Heading Value: ' + headingVal;
-    // result += '<br>Pitch Value: ' + pitchVal;
-    // result += '<br>Roll Value: ' + rollVal;
+    let result = '<br>Heading Value: ' + headingVal;
+    result += '<br>Pitch Value: ' + pitchVal;
+    result += '<br>Roll Value: ' + rollVal;
 
     // Line color determination:
     let lineCol = "blue";
@@ -147,7 +143,7 @@ function onMessage(topic, payload, packet){
     
     ctx.stroke();
    
-    // remoteDiv.innerHTML = result;
+    remoteDiv.innerHTML = result;
 }
 
 
