@@ -109,9 +109,9 @@ function onMessage(topic, payload, packet){
     let headingVal = payloadJson.heading;
     let pitchVal = payloadJson.pitch;
     let rollVal = payloadJson.roll;
-    let result = '<br><b>Heading Value: </b>' + headingVal;
-    result += '<br><b>Pitch Value: </b>' + pitchVal;
-    result += '<br><b>Roll Value: </b>' + rollVal;
+    // let result = '<br><b>Heading Value: </b>' + headingVal;
+    // result += '<br><b>Pitch Value: </b>' + pitchVal;
+    // result += '<br><b>Roll Value: </b>' + rollVal;
 
     // Line color determination:
     let lineCol = "blue";
