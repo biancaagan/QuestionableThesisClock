@@ -1,0 +1,60 @@
+/* #allText{
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+} */
+
+
+#title{
+  font-family:  "Courier New", monospace;
+  text-align: center;
+  padding-top: 3px;
+  line-height: 2px;
+}
+
+#info{
+  font-family:  "Courier New", monospace;
+  text-align: center;
+  padding-top: 0px;
+  line-height: 10px;
+}
+
+button{
+  margin-top: 20px;
+}
+
+#yes{
+  color: green;
+}
+
+#no{
+  color: red;
+}
+
+#maybe{
+  color: blue;
+}
+
+#remote{
+  font-family:  "Courier New", monospace;
+  margin: auto;
+  width: 50%;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 16px;
+}
+
+#canvas-container{
+  text-align: center;
+}
+
+#calCanvas{
+  text-align: center;
+}
+
+p{
+  font-family:  "Courier New", monospace;
+  text-align: center;
+}
+
