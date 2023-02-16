@@ -454,7 +454,7 @@ function onMessage(topic, payload, packet){
   // ctx.stroke();
 
 
-  remoteDiv.innerHTML = result;
+  // remoteDiv.innerHTML = result;
 
 }
 
@@ -463,7 +463,7 @@ function onMessage(topic, payload, packet){
 // On page load, call the setup function:
 document.addEventListener('DOMContentLoaded', setup);
 // Run a loop every 2 seconds:
-setInterval(loop, 2500);
+setInterval(loop, 3000);
 
 
 
