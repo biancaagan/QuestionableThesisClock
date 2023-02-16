@@ -29,6 +29,7 @@
 
 // test.mosquitto.org uses no username and password:
 const broker = 'wss://test.mosquitto.org:8081';
+// const broker = 'wss://test.mosquitto.org:1883';
 
 // MQTT client:
 let client;
@@ -40,7 +41,7 @@ let options = {
     // Connect timeout in ms:
     connectTimeout: 10000,
     // Authentication
-    clientId: 'mqttJsClient',
+    clientId: 'mqttJsClient' + Math.random(1000000),
 }
 
 // Topic to subscribe to when you connect:
@@ -109,9 +110,9 @@ function onMessage(topic, payload, packet){
     let headingVal = payloadJson.heading;
     let pitchVal = payloadJson.pitch;
     let rollVal = payloadJson.roll;
-    // let result = '<br><b>Heading Value: </b>' + headingVal;
-    // result += '<br><b>Pitch Value: </b>' + pitchVal;
-    // result += '<br><b>Roll Value: </b>' + rollVal;
+    let result = '<br><b>Heading Value: </b>' + headingVal;
+    result += '<br><b>Pitch Value: </b>' + pitchVal;
+    result += '<br><b>Roll Value: </b>' + rollVal;
 
     // Line color determination:
     let lineCol = "blue";
