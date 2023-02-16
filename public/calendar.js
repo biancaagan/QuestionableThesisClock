@@ -422,7 +422,8 @@ function onMessage(topic, payload, packet){
   
   // Circle color determination:
   // ------------------ Circle Activity ------------------
-  // Canvas:
+
+  // ------------------ Day Nums Circles ------------------
   var canvas = document.getElementById("calCanvas");
   var ctx = canvas.getContext("2d");
 
@@ -435,12 +436,142 @@ function onMessage(topic, payload, packet){
     activityCol = "red";
   }
 
-  ctx.beginPath();
+  let dayX;
+  let dayY;
+
+  switch(new Date().getDate()){
+    case 1:
+      dayX = 100;
+      dayY = 235;
+      break;
+    case 2:
+      dayX = 200;
+      dayY = 235;
+      break;
+    case 3:
+      dayX = 300;
+      dayY = 235;
+      break;
+    case 4:
+      dayX = 400;
+      dayY = 235;
+      break;
+    case 5:
+      dayX = 500;
+      dayY = 235;
+      break;
+    case 6:
+      dayX = 600;
+      dayY = 235;
+      break;
+    case 7:
+      dayX = 700;
+      dayY = 235;
+      break;
+    case 8:
+      dayX = 100;
+      dayY = 335;
+      break;
+    case 9:
+      dayX = 200;
+      dayY = 335;
+      break;
+    case 10:
+      dayX = 300;
+      dayY = 335;
+      break;
+    case 11:
+      dayX = 400;
+      dayY = 335;
+      break;
+    case 12:
+      dayX = 500;
+      dayY = 335;
+      break;
+    case 13:
+      dayX = 600;
+      dayY = 335;
+      break;
+    case 14:
+      dayX = 700;
+      dayY = 335;
+      break;
+    case 15:
+      dayX = 100;
+      dayY = 435;
+      break;
+    case 16:
+      dayX = 200;
+      dayY = 435;
+      break;
+    case 17:
+      dayX = 300;
+      dayY = 435;
+      break;
+    case 18:
+      dayX = 400;
+      dayY = 435;
+      break;
+    case 19:
+      dayX = 500;
+      dayY = 435;
+      break;
+    case 20:
+      dayX = 600;
+      dayY = 435;
+      break;
+    case 21:
+      dayX = 700;
+      dayY = 435;
+      break;
+    case 22:
+      dayX = 100;
+      dayY = 535;
+      break;
+    case 23:
+      dayX = 200;
+      dayY = 535;
+      break;
+    case 24:
+      dayX = 300;
+      dayY = 535;
+      break;
+    case 25:
+      dayX = 400;
+      dayY = 535;
+      break;
+    case 26:
+      dayX = 500;
+      dayY = 535;
+      break;
+    case 27:
+      dayX = 600;
+      dayY = 535;
+      break;
+    case 28:
+      dayX = 700;
+      dayY = 535;
+      break;
+    case 29:
+      dayX = 100;
+      dayY = 635;
+      break;
+    case 30:
+      dayX = 200;
+      dayY = 635;
+      break;
+    case 31:
+      dayX = 300;
+      dayY = 635;
+      break;
+  }
+
   ctx.lineWidth = 10;
-  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.arc(dayX, dayY, 40, 0, 2 * Math.PI);
   ctx.strokeStyle = activityCol;
-  ctx.arc(100, 240, 40, 0, 2*Math.PI);
   ctx.stroke();
+
 
   // // 1
   // ctx.beginPath();
