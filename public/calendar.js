@@ -8,7 +8,7 @@
 
   The goal is to have a thesis activity ring
   (similar to the activity ring on an Apple watch,
-  thanks for the idea Julia), around the each day.
+  thanks for the idea Julia), around each day.
 
   by Bianca Gan 2/16/23
 
@@ -61,8 +61,8 @@ function setup(){
 
   ctx.beginPath();
   ctx.roundRect(0, 0, canvas.width, canvas.height, 40);
-  ctx.strokeStyle = "#ffe944";
-  ctx.fillStyle = "#ffe944";
+  ctx.strokeStyle = "#D0E0E3";
+  ctx.fillStyle = "#D0E0E3";
   ctx.stroke();
   ctx.fill();
   // ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -182,7 +182,7 @@ function setup(){
   ctx.lineWidth = 10;
   ctx.beginPath();
   ctx.arc(monthX, monthY, 40, 0, 2 * Math.PI);
-  ctx.strokeStyle = "green"
+  ctx.strokeStyle = "#2C4251"
   ctx.stroke();
 
 
@@ -226,7 +226,7 @@ function setup(){
   ctx.lineWidth = 10;
   ctx.beginPath();
   ctx.arc(dayNameX, 735, 40, 0, 2 * Math.PI);
-  ctx.strokeStyle = "green";
+  ctx.strokeStyle = "#2C4251";
   ctx.stroke();
 
 }
@@ -290,10 +290,10 @@ function onMessage(topic, payload, packet){
   let activityCol = "white";
 
   if(rollVal < 95 && rollVal > 85){
-    activityCol = "green";
+    activityCol = "#2B9720";  // Green
   }
   if(rollVal > -95 && rollVal < -85){
-    activityCol = "red";
+    activityCol = "#BB0A21";  // Red
   }
 
   let dayX;
