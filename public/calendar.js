@@ -16,7 +16,10 @@
 
 
 // test.mosquitto.org uses no username and password:
-const broker = 'wss://test.mosquitto.org:8081';
+// const broker = 'wss://test.mosquitto.org:8081';
+
+// Shiftr.io
+const broker = 'wss:public.cloud.shiftr.io';
 
 // MQTT client:
 let client;
@@ -29,10 +32,13 @@ let options = {
   connectTimeout: 10000,
   // Authentication
   clientId: 'mqttJsClient' + Math.random(1000000),
+  username: 'public',
+  password: 'public'
 }
 
 // Topic to subscribe to when you connect:
-let topic = 'bgan/gyro';
+// let topic = 'bgan/gyro';  // mosquitto
+let topic = 'conndev/bag5392';
 // Divs to show messages:
 let localDiv, remoteDiv, headingVar;
 // Whether the client should be publishing or not:
@@ -237,6 +243,7 @@ function onConnect(){
   // Update localDiv text:
   localDiv.innerHTML = 'Connected to broker. Subscribing...';
   client.subscribe(topic, onSubscribe);
+  // Can subscribe to multiple topics
 }
 
 
@@ -283,7 +290,7 @@ function onMessage(topic, payload, packet){
   // result += '<br><b>Roll Value: </b>' + rollVal;
   
   // Circle color determination:
-  // ------------------ Circle Activity ------------------
+  // ------------------ Circle Activity Ring ------------------
   var canvas = document.getElementById("calCanvas");
   var ctx = canvas.getContext("2d");
 
