@@ -38,7 +38,7 @@ let options = {
 
 // Topic to subscribe to when you connect:
 // let topic = 'bgan/gyro';  // mosquitto
-let topic = 'conndev/bag5392';
+let topic = 'conndev/bgan';
 // Divs to show messages:
 let localDiv, remoteDiv, headingVar;
 // Whether the client should be publishing or not:
@@ -64,6 +64,14 @@ function setup(){
   // Canvas:
   var canvas = document.getElementById("calCanvas");
   var ctx = canvas.getContext("2d");
+
+  // Status Gradient Bar, red to green
+  // var grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  // grd.addColorStop = (0, "#2B9720");  // green
+  // grd.addColorStop = (1, "#BB0A21");  // red
+  // ctx.fillStyle = grd;
+  // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 
   ctx.beginPath();
   ctx.roundRect(0, 0, canvas.width, canvas.height, 40);
