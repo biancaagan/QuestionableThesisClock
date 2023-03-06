@@ -74,11 +74,15 @@ function setup(){
 
 
   ctx.beginPath();
-  ctx.roundRect(0, 0, canvas.width, canvas.height, 40);
-  ctx.strokeStyle = "#D0E0E3";
-  ctx.fillStyle = "#D0E0E3";
+  ctx.translate(0, 60);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "black";
+  ctx.roundRect(10, 0, 780, 800, 40);
+  // ctx.strokeStyle = "#D0E0E3";
+  // ctx.strokeRect(0, 0, 800, 800, 40);
+  // ctx.fillStyle = "#D0E0E3";
   ctx.stroke();
-  ctx.fill();
+  // ctx.fill();
   // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.font = "bold 25px Courier New";
@@ -289,6 +293,10 @@ function onMessage(topic, payload, packet){
   // Convert to JSON:
   let payloadJson = JSON.parse(payloadStr);
 
+  // Thesis? (instead of imu vals)
+  // let thesisState = payloadJson.thesis;
+
+
   // List out individual gyro values:
   let headingVal = payloadJson.heading;
   let pitchVal = payloadJson.pitch;
@@ -310,6 +318,14 @@ function onMessage(topic, payload, packet){
   if(rollVal > -95 && rollVal < -85){
     activityCol = "#BB0A21";  // Red
   }
+
+  // if(thesisState == "yes"){
+  //   activityCol = "#2B9720";  // Green
+  // }
+  // if(thesisState == "no"){
+  //   activityCol = "#BB0A21";  // RED
+  // }
+
 
   let dayX;
   let dayY;
