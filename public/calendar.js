@@ -72,9 +72,22 @@ function setup(){
   // ctx.fillStyle = grd;
   // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-
   ctx.beginPath();
-  ctx.translate(0, 60);
+  
+  // Gradient bar:
+  var grd = ctx.createLinearGradient(10, 45, 780, 20);
+  grd.addColorStop(0, "#2B9720");
+  grd.addColorStop(1, "#BB0A21");
+  ctx.fillStyle = grd;
+  ctx.fillRect(10, 45, 780, 20);
+
+  ctx.font = "bold 20px Courier New";
+  ctx.fillStyle = "black";
+  ctx.fillText("More Thesis", 10, 30);
+  ctx.fillText("Less Thesis", 660, 30);
+
+  // Calendar container:
+  ctx.translate(0, 80);
   ctx.lineWidth = 2;
   ctx.strokeStyle = "black";
   ctx.roundRect(10, 0, 780, 800, 40);
