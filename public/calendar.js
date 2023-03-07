@@ -254,7 +254,7 @@ function setup(){
 
   ctx.lineWidth = 10;
   ctx.beginPath();
-  ctx.arc(dayX + 2, dayY, 25, 0, 2 * Math.PI);
+  ctx.arc(dayX, dayY, 25, 0, 2 * Math.PI);
   ctx.strokeStyle = "white";
   ctx.fillStyle = activityCol;
   ctx.fill();
