@@ -44,6 +44,11 @@ let localDiv, remoteDiv, headingVar;
 // Whether the client should be publishing or not:
 let publishing = true;
 
+// I got the code relating to arrays from Priyanka because she's awesome:
+// https://github.com/makin-stuff/ITP/blob/main/Connected_Devices/Device_Data_Dashboard/public/script.js
+// Create arrays for incoming values:
+const valsArray = [];
+var gridSize = 48;  // every 30min for 24hrs
 
 function setup(){
   // Put the divs in variables for ease of use:
@@ -74,17 +79,18 @@ function setup(){
 
   ctx.beginPath();
   
-  // // Gradient bar:
-  // var grd = ctx.createLinearGradient(10, 45, 780, 20);
-  // grd.addColorStop(0, "#2B9720");
-  // grd.addColorStop(1, "#BB0A21");
-  // ctx.fillStyle = grd;
-  // ctx.fillRect(10, 45, 780, 20);
+  // Gradient bar:
+  var grd = ctx.createLinearGradient(10, 45, 780, 20);
+  grd.addColorStop(0, "green"); // #2B9720
+  // grd.addColorStop(0.5, "black");
+  grd.addColorStop(1, "red"); // #BB0A21
+  ctx.fillStyle = grd;
+  ctx.fillRect(10, 45, 780, 20);
 
-  // ctx.font = "bold 20px Courier New";
-  // ctx.fillStyle = "black";
-  // ctx.fillText("More Thesis", 10, 30);
-  // ctx.fillText("Less Thesis", 660, 30);
+  ctx.font = "bold 20px Courier New";
+  ctx.fillStyle = "black";
+  ctx.fillText("More Thesis", 10, 30);
+  ctx.fillText("Less Thesis", 660, 30);
 
   // Calendar container:
   ctx.translate(0, 80);
@@ -259,7 +265,19 @@ function setup(){
   ctx.fillStyle = activityCol;
   ctx.fill();
   ctx.stroke();
-  ctx.stroke();
+
+  // let rad = Math.PI / 180;
+  // // 1
+  // ctx.beginPath();
+  // ctx.strokeStyle = "red";
+  // ctx.arc(100, 240, 40, -90 * rad, -75 * rad);
+  // ctx.stroke();
+  // // 2
+  // ctx.beginPath();
+  // ctx.strokeStyle = "green";
+  // ctx.arc(100, 240, 40, -75 * rad, -60 * rad);
+  // ctx.stroke();
+
 
 
   // ------------------ Numbers ------------------
@@ -405,7 +423,7 @@ function setup(){
   ctx.arc(dayNameX, 735, 40, 0, 2 * Math.PI);
   ctx.strokeStyle = "#2C4251";
   ctx.stroke();
-
+  // ctx.closePath();
 
 }
 
@@ -464,27 +482,38 @@ function onMessage(topic, payload, packet){
   // let result = '<br><b>Heading Value: </b>' + headingVal;
   // result += '<br><b>Pitch Value: </b>' + pitchVal;
   // result += '<br><b>Roll Value: </b>' + rollVal;
+
+  // let time = new Date();
+  // let hours = time.getHours();
+  // let minutes = time.getMinutes();
+  // let seconds = time.getSeconds();
+
+  // Add values to array:
+  valsArray.push(rollVal);
+
+  // Keep arrays within max size:
+  if(valsArray.length > gridSize){
+    valsArray.shift();  // removes oldest reading
+  }
+
+  var i = valsArray.length-1;
+
+
+
   
   // Circle color determination:
   // ------------------ Circle Activity Ring ------------------
   var canvas = document.getElementById("calCanvas");
   var ctx = canvas.getContext("2d");
 
-  let activityCol = "white";
+  // let activityCol = "white";
 
-  if(rollVal < 95 && rollVal > 85){
-    activityCol = "#2B9720";  // Green
-  } else if(rollVal > -95 && rollVal < -85){
-    activityCol = "#BB0A21";  // Red
-  } else{
-    activityCol = "white";
-  }
-
-  // if(thesisState == "yes"){
+  // if(rollVal < 95 && rollVal > 85){
   //   activityCol = "#2B9720";  // Green
-  // }
-  // if(thesisState == "no"){
-  //   activityCol = "#BB0A21";  // RED
+  // } else if(rollVal > -95 && rollVal < -85){
+  //   activityCol = "#BB0A21";  // Red
+  // } else{
+  //   activityCol = "white";
   // }
 
 
@@ -618,16 +647,32 @@ function onMessage(topic, payload, packet){
       break;
   }
 
-  ctx.lineWidth = 10;
-  ctx.beginPath();
-  ctx.arc(dayX, dayY, 40, 0, 2 * Math.PI);
-  ctx.strokeStyle = activityCol;
-  ctx.stroke();
+  // ctx.lineWidth = 10;
+  // ctx.beginPath();
+  // ctx.strokeStyle = activityCol;  // rgb(rVal, gVal, 32)
+  // ctx.arc(dayX, dayY, 40, 0, 2 * Math.PI);
+  // ctx.stroke();
 
+  // Circle activity ring in 48 segments:
+  let rad = Math.PI / 180;
+  for(var a = -90; a <= 270; a += 7.5){
+    for(var j = 0; j <= 48; j++){
+      if(valsArray[j] < 95 && valsArray[j] > 85){ // YES
+        ctx.strokeStyle = "green";
+      } else if(valsArray[j] > -95 && valsArray[j] < -85){  // NO
+        ctx.strokeStyle = "red";
+      } else{ // UNKNOWN
+        ctx.strokeStyle = "white";
+      }
+    }
+    ctx.arc(dayX, dayY, 40, a * rad, (a + 7.5) * rad);
+    // ctx.stroke();
+    // ctx.closePath();
+  }
 
   // // 1
   // ctx.beginPath();
-  // ctx.strokeStyle = activityCol;
+  // ctx.strokeStyle = "red";
   // ctx.arc(100, 240, 40, -Math.PI/2, -Math.PI/3);
   // ctx.stroke();
   // // 2
@@ -641,19 +686,9 @@ function onMessage(topic, payload, packet){
 
 }
 
-function saveData(data){
-  // Get path to data file:
-  let filePath = __dirname + 'data.json';
-
-  fs.exists(filePath, function (exists){
-    if(exists){
-      fs.appendFile(filePath, JSON.stringify(data) + '\n');
-    } else{
-      fs.writeFile(filePath, JSON.stringify(data) + '\n');
-    }
-  });
+function rgb(r, g, b){
+  return "rgb("+r+", "+g+", "+b+")";
 }
-
 
 
 // On page load, call the setup function:

@@ -65,21 +65,50 @@ function setup(){
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
 
+  // Table
   ctx.beginPath();
-  ctx.fillStyle = "yellow";
-  ctx.moveTo(500, 250);
-  ctx.lineTo(550, 250);
-  ctx.lineTo(650, 500);
-  ctx.lineTo(350, 500);
-  ctx.lineTo(450, 250);
+  ctx.fillStyle = "black";
+  ctx.moveTo(250, 450);
+  ctx.lineTo(750, 450);
+  ctx.lineTo(950, 650);
+  ctx.lineTo(50, 650);
+  ctx.rect(50, 650, 900, 25);
+  ctx.fill();
+  ctx.closePath();
+
+  // Light
+  ctx.beginPath();
+  ctx.fillStyle = "rgb(252, 231, 75, 50%)";
+  ctx.moveTo(500, 200);
+  ctx.lineTo(600, 250);
+  ctx.lineTo(600, 600);
+  ctx.lineTo(250, 600);
+  ctx.lineTo(500, 200);
+  ctx.fill();
+  ctx.closePath();
+
+  // Lamp
+  ctx.beginPath();
+  ctx.fillStyle = "black";
+  ctx.arc(550, 250, 75, -5 * Math.PI / 6, -11 * Math.PI / 6);
   ctx.fill();
   ctx.closePath();
 
   ctx.beginPath();
-  ctx.fillStyle = "black";
-  ctx.arc(500, 300, 150, Math.PI, 0);
+  ctx.lineWidth = 15;
+  ctx.moveTo(575, 225);
+  ctx.lineTo(700, 160);
+  ctx.moveTo(700, 160);
+  ctx.lineTo(650, 550);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(695, 165, 15, 0, 2 * Math.PI);
   ctx.fill();
-  ctx.closePath();
+  
+  // ctx.font = "25px Courier New";
+  // ctx.fillStyle = "white";
+  // ctx.fillText("yes", 425, 550);
   
 }
 
@@ -131,22 +160,31 @@ function onMessage(topic, payload, packet){
   let headingVal = payloadJson.heading;
   let pitchVal = payloadJson.pitch;
   let rollVal = payloadJson.roll;
-  // let result = '<br><b>Heading Value: </b>' + headingVal;
-  // result += '<br><b>Pitch Value: </b>' + pitchVal;
-  // result += '<br><b>Roll Value: </b>' + rollVal;
+  let result = '<br><b>Heading Value: </b>' + headingVal;
+  result += '<br><b>Pitch Value: </b>' + pitchVal;
+  result += '<br><b>Roll Value: </b>' + rollVal;
   
-  // var canvas = document.getElementById("calCanvas");
-  // var ctx = canvas.getContext("2d");
+  var canvas = document.getElementById("calCanvas");
+  var ctx = canvas.getContext("2d");
 
-  // let activityCol = "white";
 
-  // if(rollVal < 95 && rollVal > 85){
-  //   activityCol = "#2B9720";  // Green
-  // } else if(rollVal > -95 && rollVal < -85){
-  //   activityCol = "#BB0A21";  // Red
-  // } else{
-  //   activityCol = "white";
-  // }
+  let activityCol = "white";
+
+  if(rollVal < 95 && rollVal > 85){
+    activityCol = "#2B9720";  // Green
+  } else if(rollVal > -95 && rollVal < -85){
+    activityCol = "#BB0A21";  // Red
+  } else{
+    activityCol = "white";
+  }
+
+  ctx.beginPath();
+  ctx.font = "bold 25px Courier New";
+  ctx.fillStyle = activityCol;
+  ctx.fillText("yes", 425, 550);
+
+
+  remoteDiv.innerHTML = result;
 
 }
 
